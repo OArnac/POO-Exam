@@ -3,3 +3,24 @@
 {% block content %}
 
 {% endblock %}
+
+
+{% $bdd = new PDO('mysql:host=localhost;dbname=vtc;charset=utf8;port=3306', 'root', ''); %}
+{% $request = "SELECT * FROM association_vehicule_conducteur"; %}
+{% $response = $bdd->query($request); %}
+{% $association = $response->fetchAll(PDO::FETCH_ASSOC); %}
+
+<table>
+    <tr>
+        <th>id_association</th>
+        <th>id_vehicule</th>
+        <th>id_conducteur</th>
+    </tr>
+    {% foreach $association as $asso %}
+    <tr>
+        <td>{{$asso.id_association}}</td>
+        <td>{{$asso.id_vehicule}}</td>
+        <td>{{$asso.id_conducteur}}</td>
+    </tr>
+    {% endforeach %}
+</table>

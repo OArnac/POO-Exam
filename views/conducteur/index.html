@@ -2,6 +2,27 @@
 
 {% block content %}
 
+{% $bdd = new PDO('mysql:host=localhost;dbname=vtc;charset=utf8;port=3306', 'root', ''); %}
+{% $request = "SELECT * FROM conducteur"; %}
+{% $response = $bdd->query($request); %}
+{% $conducteurs = $response->fetchAll(PDO::FETCH_ASSOC); %}
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>Nom</th>
+        <th>Pr&#233nom</th>
+    </tr>
+    {% foreach $conducteurs as $conducteur %}
+    <tr>
+        <td>{{$conducteur.id_conducteur}}</td>
+        <td>{{$conducteur.nom}}</td>
+        <td>{{$conducteur.prenom}}</td>
+    </tr>
+    {% endforeach %}
+</table>
+
+
 <div class="album py-5 bg-light">
     <div class="container">
 
