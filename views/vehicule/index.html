@@ -2,6 +2,29 @@
 
 {% block content %}
 
+{% $bdd = new PDO('mysql:host=localhost;dbname=vtc;charset=utf8;port=3306', 'root', ''); %}
+{% $request = "SELECT * FROM vehicule"; %}
+{% $response = $bdd->query($request); %}
+{% $voiture = $response->fetchAll(PDO::FETCH_ASSOC); %}
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>Marque</th>
+        <th>Mod&#232le</th>
+        <th>Couleur</th>
+        <th>Immatriculation</th>
+    </tr>
+    {% foreach $vehicule as $voiture %}
+    <tr>
+        <td>{{$voiture.id_constructeur}}</td>
+        <td>{{$voiture.marque}}</td>
+        <td>{{$voiture.modele}}</td>
+        <td>{{$voiture.couleur}}</td>
+        <td>{{$voiture.immatriculation}}</td>
+    </tr>
+    {% endforeach %}
+</table>
 
 <div class="album py-5 bg-light">
     <div class="container">
@@ -30,6 +53,9 @@
                         <input type="text" name="immatriculation" id="">
                     </div>
 
+                    <div class="form-group">
+                        <input type="button" value="Envoyer" class="btn">
+                    </div>
                 </form>
             </div>
         </div>
