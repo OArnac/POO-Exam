@@ -1,3 +1,7 @@
-views/
+/views/
 
-assets/img
+/assets/img
+
+/vendor/
+
+README.md

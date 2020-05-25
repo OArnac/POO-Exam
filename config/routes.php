@@ -8,7 +8,7 @@ $router->setNamespace('App\Controller');
 /**
  * Insérez vos routes ici
  */
-$router->get('/file', 'class@all/list/index...');
+// $router->get('/file', 'class@all/list/index...');
 
 $router->run();
 
